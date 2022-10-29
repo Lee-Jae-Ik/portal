@@ -16,5 +16,5 @@ import java.util.Optional;
  */
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
-    Optional<User> findUserByUserEmailAAndPhoneNumberAndDeleteYn(String userEmail, String phoneNumber, boolean deleteYn);
+    Optional<User> findUserByUserEmailAndPhoneNumberAndDeleteYn(String userEmail, String phoneNumber, boolean deleteYn);
 }

@@ -36,7 +36,6 @@ public class User{
     @Column(name = "phone_number", nullable = false)
     private String phoneNumber;
 
-    @CreatedDate
     @Column(name = "user_created_date", nullable = false)
     private LocalDateTime userCreatedDate;
 

@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserInsertDto insertUser(UserInsertDto userInsertDto) {
 
-        if (StringUtils.hasText(userInsertDto.getUserName())) userInsertDto.setUserName("Guest" + Timestamp.valueOf(LocalDateTime.now()));
+        if (!StringUtils.hasText(userInsertDto.getUserName())) userInsertDto.setUserName("Guest");
 
         if (validationUserDuplicationCheck(userInsertDto)) throw new ApiRuntimeException(ApiResult.DUPLICATION_USER, "이미 존재 하는 아이디 입니다.");
 
@@ -41,11 +41,12 @@ public class UserServiceImpl implements UserService {
                         .phoneNumber(userInsertDto.getPhoneNumber())
                         .userPassword(userInsertDto.getUserPassword())
                         .userName(userInsertDto.getUserName())
+                        .userCreatedDate(LocalDateTime.now())
                 .build());
         return userInsertDto;
     }
 
     private boolean validationUserDuplicationCheck(UserInsertDto userInsertDto) {
-        return userRepository.findUserByUserEmailAAndPhoneNumberAndDeleteYn(userInsertDto.getUserEmail(), userInsertDto.getPhoneNumber(), false).isPresent();
+        return userRepository.findUserByUserEmailAndPhoneNumberAndDeleteYn(userInsertDto.getUserEmail(), userInsertDto.getPhoneNumber(), false).isPresent();
     }
 }
