@@ -24,3 +24,12 @@ spring:
       on-profile: local
 server:
   port: 8080
+
+jwt:
+  accessTokenKey: leejaeiktest
+  refreshTokenKey : leejaeikretest
+  time:
+    accessToken : 600000
+    refreshToken : 3600000
+
+---

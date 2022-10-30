@@ -19,10 +19,7 @@ import javax.validation.constraints.NotNull;
 @Data
 @NoArgsConstructor @AllArgsConstructor
 @Builder
-public class UserInsertDto {
-
-    @NotNull(message = "User's email must be not null !!")
-    private String userEmail;
+public class UserInsertDto extends UserBasic {
 
     @NotNull(message = "User's password must be not null !!")
     private String userPassword;

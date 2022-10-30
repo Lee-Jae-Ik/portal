@@ -1,5 +1,6 @@
 package com.lji.portal.service;
 
+import com.lji.portal.model.dto.UserFindDto;
 import com.lji.portal.model.dto.UserInsertDto;
 
 /**
@@ -13,4 +14,6 @@ import com.lji.portal.model.dto.UserInsertDto;
 public interface UserService {
 
     UserInsertDto insertUser(UserInsertDto userInsertDto);
+
+    UserFindDto selectOneUser(Long userId);
 }

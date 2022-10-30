@@ -1,6 +1,6 @@
 package com.lji.portal.model.response.fail;
 
-import com.lji.portal.model.response.ApiResponse;
+import com.lji.portal.model.response.ApiStringResponse;
 import com.lji.portal.model.response.ApiResult;
 import lombok.Setter;
 import org.springframework.util.StringUtils;
@@ -13,7 +13,7 @@ import org.springframework.util.StringUtils;
  * @see
  * @since 2022-10-29
  */
-public class ApiErrorResposne<T> extends ApiResponse {
+public class ApiErrorResposne<T> extends ApiStringResponse {
 
     @Setter
     private String changeMessage;
@@ -22,12 +22,8 @@ public class ApiErrorResposne<T> extends ApiResponse {
         super(apiResult, null);
     }
 
-    public ApiErrorResposne(ApiResult apiResult, T data) {
-        super(apiResult, data);
-    }
-
-    public ApiErrorResposne(ApiResult apiResult, T data, String message) {
-        super(apiResult,data,message);
+    public ApiErrorResposne(ApiResult apiResult, String message) {
+        super(apiResult,message);
     }
 
     @Override

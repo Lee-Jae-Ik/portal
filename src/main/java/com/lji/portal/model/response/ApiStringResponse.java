@@ -13,12 +13,12 @@ import lombok.Getter;
  */
 @Getter
 @AllArgsConstructor
-public class ApiResponse<T> {
+public class ApiStringResponse {
 
     private ApiResult apiResult;
-    private T data;
+    private String data;
 
-    public ApiResponse(ApiResult apiResult, T data, String message) {
+    public ApiStringResponse(ApiResult apiResult, String data, String message) {
         this.apiResult = apiResult;
         this.data = data;
         apiResult.setMessage(message);

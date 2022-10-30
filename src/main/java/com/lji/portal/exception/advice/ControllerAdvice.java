@@ -1,7 +1,7 @@
 package com.lji.portal.exception.advice;
 
 import com.lji.portal.exception.ApiRuntimeException;
-import com.lji.portal.model.response.ApiResponse;
+import com.lji.portal.model.response.ApiStringResponse;
 import com.lji.portal.model.response.ApiResult;
 import com.lji.portal.model.response.fail.ApiErrorResposne;
 import lombok.extern.slf4j.Slf4j;
@@ -31,7 +31,7 @@ import java.time.format.DateTimeFormatter;
 public class ControllerAdvice {
 
     @ExceptionHandler(ApiRuntimeException.class)
-    public ResponseEntity<ApiResponse> runtimeExceptionHandler(ApiRuntimeException e) {
+    public ResponseEntity<ApiStringResponse> runtimeExceptionHandler(ApiRuntimeException e) {
         log.error(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd:HHmmss")) +
                 "Api Runtime Exception => {}", e.toString());
 
@@ -39,8 +39,8 @@ public class ControllerAdvice {
         Charset utf8 = StandardCharsets.UTF_8;
         httpHeaders.setContentType(new MediaType(MediaType.APPLICATION_JSON,utf8));
 
-        ApiResponse apiResponse = new ApiErrorResposne(e.getApiResult());
-        return ResponseEntity.status(HttpStatus.OK).headers(httpHeaders).body(apiResponse);
+        ApiStringResponse apiStringResponse = new ApiErrorResposne(e.getApiResult());
+        return ResponseEntity.status(HttpStatus.OK).headers(httpHeaders).body(apiStringResponse);
     }
 
     @ExceptionHandler({Exception.class})
