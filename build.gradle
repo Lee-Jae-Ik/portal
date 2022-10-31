@@ -35,7 +35,6 @@ dependencies {
 	implementation "com.querydsl:querydsl-jpa:${queryDslVersion}"
 	implementation "com.querydsl:querydsl-apt:${queryDslVersion}"
 	runtimeOnly 'com.h2database:h2'
-	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'mysql:mysql-connector-java'
@@ -51,6 +50,8 @@ dependencies {
 	implementation 'com.googlecode.json-simple:json-simple:1.1.1'
 	implementation group: 'com.google.code.gson', name: 'gson', version: '2.8.7'
 
+	//모니터링
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '2.6.3'
 }
 
 //querydsl 추가 시작

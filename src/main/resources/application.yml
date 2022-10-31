@@ -32,4 +32,13 @@ jwt:
     accessToken : 600000
     refreshToken : 3600000
 
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
 ---
