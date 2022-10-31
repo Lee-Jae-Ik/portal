@@ -1,9 +1,11 @@
-package com.lji.portal.model.response;
+package com.lji.portal.model.response.result;
 
 import com.lji.portal.model.dto.UserBasic;
-import com.lji.portal.model.entity.User;
+import com.lji.portal.model.response.ApiResult;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+
+import java.util.List;
 
 /**
  * ApiUserEntityResponse
@@ -15,11 +17,11 @@ import lombok.Getter;
  */
 @Getter
 @AllArgsConstructor
-public class ApiUserEntityResponse<T extends UserBasic> {
+public class ApiListObjectResponse<T> {
     private ApiResult apiResult;
-    private T data;
+    private List<T> data;
 
-    public ApiUserEntityResponse(ApiResult apiResult, T data, String message) {
+    public ApiListObjectResponse(ApiResult apiResult, List<T> data, String message) {
         this.apiResult = apiResult;
         this.data = data;
         apiResult.setMessage(message);

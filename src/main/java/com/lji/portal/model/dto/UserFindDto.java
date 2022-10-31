@@ -13,7 +13,7 @@ import lombok.*;
 @Getter @Setter
 @NoArgsConstructor @AllArgsConstructor
 @Builder
-public class UserFindDto {
+public class UserFindDto extends UserBasic{
 
     private String userEmail;
     private String userName;

@@ -1,24 +1,25 @@
-package com.lji.portal.model.response;
+package com.lji.portal.model.response.result;
 
+import com.lji.portal.model.dto.UserBasic;
+import com.lji.portal.model.response.ApiResult;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
- * ApiResponse
+ * ApiUserEntityResponse
  *
  * @author Lee-Jae-Ik
  * @version 0.1
  * @see
- * @since 2022-10-29
+ * @since 2022/10/30
  */
 @Getter
 @AllArgsConstructor
-public class ApiStringResponse {
-
+public class ApiUserEntityResponse<T extends UserBasic> {
     private ApiResult apiResult;
-    private String data;
+    private T data;
 
-    public ApiStringResponse(ApiResult apiResult, String data, String message) {
+    public ApiUserEntityResponse(ApiResult apiResult, T data, String message) {
         this.apiResult = apiResult;
         this.data = data;
         apiResult.setMessage(message);

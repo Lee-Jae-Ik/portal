@@ -14,12 +14,10 @@ import javax.validation.constraints.NotNull;
  */
 @Getter @Setter
 @AllArgsConstructor @NoArgsConstructor
-@Builder
 public class UserBasic {
 
     @NotNull(message = "User's email must be not null !!")
     private String userEmail;
 
-    @NotNull(message = "User's name must be not null !!")
     private String userName;
 }

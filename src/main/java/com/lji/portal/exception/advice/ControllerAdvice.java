@@ -1,7 +1,7 @@
 package com.lji.portal.exception.advice;
 
 import com.lji.portal.exception.ApiRuntimeException;
-import com.lji.portal.model.response.ApiStringResponse;
+import com.lji.portal.model.response.result.ApiStringResponse;
 import com.lji.portal.model.response.ApiResult;
 import com.lji.portal.model.response.fail.ApiErrorResposne;
 import lombok.extern.slf4j.Slf4j;

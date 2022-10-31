@@ -2,14 +2,12 @@ package com.lji.portal.controller;
 
 import com.lji.portal.controller.base.extend.BaseController;
 import com.lji.portal.model.dto.UserInsertDto;
-import com.lji.portal.model.response.ApiStringResponse;
-import com.lji.portal.model.response.ApiUserEntityResponse;
+import com.lji.portal.model.response.result.ApiListObjectResponse;
+import com.lji.portal.model.response.result.ApiUserEntityResponse;
 import com.lji.portal.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -30,5 +28,15 @@ public class UserController extends BaseController {
     @PostMapping("/user")
     public ResponseEntity<ApiUserEntityResponse> insertUser(@RequestBody @Valid UserInsertDto userInsertDto) {
         return callRestApiUserDtoResult(userService.insertUser(userInsertDto));
+    }
+
+    @GetMapping("/user")
+    public ResponseEntity<ApiUserEntityResponse> selectOneUser(@RequestParam Long userId) {
+        return callRestApiUserDtoResult(userService.selectOneUser(userId));
+    }
+
+    @GetMapping("/user/all")
+    public ResponseEntity<ApiListObjectResponse> findAllUser() {
+        return callRestApiListObjectResult(userService.selectListUser());
     }
 }

@@ -2,7 +2,10 @@ package com.lji.portal.model.response.sucess;
 
 import com.lji.portal.model.dto.UserBasic;
 import com.lji.portal.model.response.ApiResult;
+import com.lji.portal.model.response.result.ApiListObjectResponse;
 import com.lji.portal.model.response.result.ApiUserEntityResponse;
+
+import java.util.List;
 
 /**
  * SucessResponse
@@ -12,8 +15,8 @@ import com.lji.portal.model.response.result.ApiUserEntityResponse;
  * @see
  * @since 2022-10-29
  */
-public class SucessUserEntityResponse<T extends UserBasic> extends ApiUserEntityResponse {
-    public SucessUserEntityResponse(T data) {
+public class SucessListObjectResponse<T> extends ApiListObjectResponse {
+    public SucessListObjectResponse(List<T> data) {
         super(ApiResult.SUCESS,data);
     }
 }

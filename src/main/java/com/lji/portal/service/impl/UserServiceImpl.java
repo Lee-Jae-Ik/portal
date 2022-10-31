@@ -15,7 +15,9 @@ import org.springframework.util.StringUtils;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * UserServiceImpl
@@ -35,9 +37,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserInsertDto insertUser(UserInsertDto userInsertDto) {
 
+        /* 이름 미 기입 시 Guest 이름 생성 로직 */
         long today = LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
         if (!StringUtils.hasText(userInsertDto.getUserName())) userInsertDto.setUserName("Guest" + today);
 
+        /* 중복 회원 체크 */
         if (validationUserDuplicationCheck(userInsertDto))
             throw new ApiRuntimeException(ApiResult.DUPLICATION_USER, "이미 존재 하는 아이디 입니다.");
 
@@ -54,6 +58,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserFindDto selectOneUser(Long userId) {
 
+        /* 회원 정보 없을 경우 exception 처리 */
         User findUser = Optional.ofNullable(userRepository.findUserByUserId(userId))
                 .orElseThrow(() -> new ApiRuntimeException(ApiResult.NO_DATA, "존재하지 않은 유저 입니다."));
 
@@ -62,6 +67,15 @@ public class UserServiceImpl implements UserService {
                 .userName(findUser.getUserName())
                 .phoneNumber(findUser.getPhoneNumber())
                 .build();
+    }
+
+    @Override
+    public List<UserFindDto> selectListUser() {
+        return userRepository.findAll().stream().map(user -> UserFindDto.builder()
+                .userEmail(user.getUserEmail())
+                .userName(user.getUserName())
+                .phoneNumber(user.getPhoneNumber())
+                .build()).collect(Collectors.toList());
     }
 
     private boolean validationUserDuplicationCheck(UserInsertDto userInsertDto) {

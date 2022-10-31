@@ -1,6 +1,6 @@
 package com.lji.portal.model.response.fail;
 
-import com.lji.portal.model.response.ApiStringResponse;
+import com.lji.portal.model.response.result.ApiStringResponse;
 import com.lji.portal.model.response.ApiResult;
 import lombok.Setter;
 import org.springframework.util.StringUtils;
