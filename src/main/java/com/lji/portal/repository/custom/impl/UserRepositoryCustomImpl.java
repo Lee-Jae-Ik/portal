@@ -29,7 +29,7 @@ public class UserRepositoryCustomImpl implements UserRepositoryCustom {
 
         return jpaQueryFactory.select(QUser.user)
                 .from(QUser.user)
-                .where(QUser.user.deleteYn.isFalse())
+                .where(QUser.user.deleteYn.isFalse(), QUser.user.userId.eq(userID))
                 .fetchOne();
     }
 }
