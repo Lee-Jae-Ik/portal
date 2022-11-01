@@ -1,5 +1,7 @@
 package com.lji.portal.security.filter;
 
+import com.lji.portal.exception.ApiRuntimeException;
+import com.lji.portal.model.response.ApiResult;
 import com.lji.portal.security.SecurityUrlConfig;
 import com.lji.portal.security.jwt.JwtProvider;
 import lombok.RequiredArgsConstructor;
@@ -51,7 +53,7 @@ public class CustomerAuthorizationFilter extends OncePerRequestFilter {
         String accessToken = jwtProvider.resolveToken(request);
 
         if (!jwtProvider.validateAccessToken(accessToken)) {
-
+            throw new ApiRuntimeException(ApiResult.SERVER_ERROR);
         }
     }
 }
