@@ -41,4 +41,11 @@ management:
       exposure:
         include: "*"
 
+security:
+  getUrlList:
+    - /user
+    - /user/all
+  postUrlList:
+    - /user
+    - /user/login
 ---
