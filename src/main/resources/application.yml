@@ -27,7 +27,7 @@ server:
 
 jwt:
   accessTokenKey: leejaeiktest
-  refreshTokenKey : leejaeikretest
+  refreshTokenKey: leejaeikretest
   time:
     accessToken : 600000
     refreshToken : 3600000

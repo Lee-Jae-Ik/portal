@@ -41,17 +41,17 @@ public class JwtProvider {
     @Value("${jwt.time.accessToken")
     private static long accessTokenValidityInMilliseconds;
 
-    @Value("${jwt.time.accessToken")
+    @Value("${jwt.time.refreshToken")
     private static long refreshTokenValidityInMilliseconds;
 
     private Key accessTokenJwtKey;
     private Key refreshTokenJwtKey;
 
-    @PostConstruct
-    public void keyInitialize() {
-        this.accessTokenJwtKey = Keys.hmacShaKeyFor(Decoders.BASE64.decode(ACCESSTOKEN_SECRETE_KEY));
-        this.refreshTokenJwtKey = Keys.hmacShaKeyFor(Decoders.BASE64.decode(REFRESHTOKEN_SECRETE_KEY));
-    }
+//    @PostConstruct
+//    public void keyInitialize() {
+//        this.accessTokenJwtKey = Keys.hmacShaKeyFor(ACCESSTOKEN_SECRETE_KEY.getBytes());
+//        this.refreshTokenJwtKey = Keys.hmacShaKeyFor(REFRESHTOKEN_SECRETE_KEY.getBytes());
+//    }
 
     public String createAccessToken(Long userId, String roleName) {
 
