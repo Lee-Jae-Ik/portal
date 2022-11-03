@@ -61,19 +61,11 @@ public class ControllerRequestHeaderAop {
         log.info(stringBuilder.toString());
     }
 
-    @AfterReturning("execution(* com.lji.*.controller.*.*(..)) && args(response)")
-    public void printResponseAtLog(JoinPoint joinPoint, HttpServletResponse response) {
-        final String THREAD_ID_END = "END[" + Thread.currentThread().getId() + "]";
-        StringBuilder stringBuilder = new StringBuilder();
-
-        /* API 호출 시 로그 출력 내용 작성 */
-        stringBuilder.append("\n[").append(THREAD_ID_END).append("]======================================================================");
-        stringBuilder.append("\n[").append(THREAD_ID_END).append("] 1. Target Name : ").append(joinPoint.getTarget().getClass().getName()) // api method(controller)
-                .append(joinPoint.getSignature().getName());
-
-        log.info(stringBuilder.toString());
-    }
-
+    /**
+     * Client Ip 체킹 Method
+     * @param request
+     * @return
+     */
     private String getClientIpAddr(HttpServletRequest request) {
         String ip = request.getHeader("X-Forwarded-For");
 

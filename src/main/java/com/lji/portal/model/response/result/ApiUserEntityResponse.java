@@ -14,10 +14,14 @@ import lombok.Getter;
  * @since 2022/10/30
  */
 @Getter
-@AllArgsConstructor
 public class ApiUserEntityResponse<T extends UserBasic> {
     private ApiResult apiResult;
     private T data;
+
+    public ApiUserEntityResponse(ApiResult apiResult, T data) {
+        this.apiResult = apiResult;
+        this.data = data;
+    }
 
     public ApiUserEntityResponse(ApiResult apiResult, T data, String message) {
         this.apiResult = apiResult;
