@@ -2,8 +2,7 @@ package com.lji.portal.controller;
 
 import com.lji.portal.controller.base.extend.BaseController;
 import com.lji.portal.model.dto.UserInsertDto;
-import com.lji.portal.model.response.result.ApiListObjectResponse;
-import com.lji.portal.model.response.result.ApiUserEntityResponse;
+import com.lji.portal.model.response.result.ApiResponse;
 import com.lji.portal.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -26,17 +25,17 @@ public class UserController extends BaseController {
     private final UserService userService;
 
     @PostMapping("/user")
-    public ResponseEntity<ApiUserEntityResponse> insertUser(@RequestBody @Valid UserInsertDto userInsertDto) {
-        return callRestApiUserDtoResult(userService.insertUser(userInsertDto));
+    public ResponseEntity<ApiResponse> insertUser(@RequestBody @Valid UserInsertDto userInsertDto) {
+        return callRestApi(userService.insertUser(userInsertDto));
     }
 
     @GetMapping("/user")
-    public ResponseEntity<ApiUserEntityResponse> selectOneUser(@RequestParam Long userId) {
-        return callRestApiUserDtoResult(userService.selectOneUser(userId));
+    public ResponseEntity<ApiResponse> selectOneUser(@RequestParam Long userId) {
+        return callRestApi(userService.selectOneUser(userId));
     }
 
     @GetMapping("/user/all")
-    public ResponseEntity<ApiListObjectResponse> findAllUser() {
-        return callRestApiListObjectResult(userService.selectListUser());
+    public ResponseEntity<ApiResponse> findAllUser() {
+        return callRestApi(userService.selectListUser());
     }
 }

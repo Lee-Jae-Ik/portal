@@ -2,7 +2,6 @@ package com.lji.portal.model.response.result;
 
 import com.lji.portal.model.dto.UserBasic;
 import com.lji.portal.model.response.ApiResult;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
@@ -14,16 +13,16 @@ import lombok.Getter;
  * @since 2022/10/30
  */
 @Getter
-public class ApiUserEntityResponse<T extends UserBasic> {
+public class ApiResponse<T> {
     private ApiResult apiResult;
     private T data;
 
-    public ApiUserEntityResponse(ApiResult apiResult, T data) {
+    public ApiResponse(ApiResult apiResult, T data) {
         this.apiResult = apiResult;
         this.data = data;
     }
 
-    public ApiUserEntityResponse(ApiResult apiResult, T data, String message) {
+    public ApiResponse(ApiResult apiResult, T data, String message) {
         this.apiResult = apiResult;
         this.data = data;
         apiResult.setMessage(message);

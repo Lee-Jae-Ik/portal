@@ -1,7 +1,7 @@
 package com.lji.portal.model.response.sucess;
 
-import com.lji.portal.model.response.result.ApiStringResponse;
 import com.lji.portal.model.response.ApiResult;
+import com.lji.portal.model.response.result.ApiResponse;
 
 /**
  * SucessResponse
@@ -11,8 +11,8 @@ import com.lji.portal.model.response.ApiResult;
  * @see
  * @since 2022-10-29
  */
-public class SucessStringResponse extends ApiStringResponse {
-    public SucessStringResponse(String data) {
+public class SucessResponse<T> extends ApiResponse {
+    public SucessResponse(T data) {
         super(ApiResult.SUCESS,data);
     }
 }
