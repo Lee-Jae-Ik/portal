@@ -20,6 +20,7 @@ import javax.validation.Valid;
  */
 @RestController
 @RequiredArgsConstructor
+@RequestMapping(value = "/v1")
 public class UserController extends BaseController {
 
     private final UserService userService;
